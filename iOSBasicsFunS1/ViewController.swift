@@ -35,12 +35,39 @@ import UIKit
 // example: ViewController
 
 class ViewController: UIViewController {
+    
+    // MARK: - Connections
+    // we have 4 UIViews in our storyboard
+    // they are not "wired" up to our ViewController yet
+    // define a Connection between the views we add in IB and properties in ViewController
+    @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var answerLabel: UILabel!
+    // @IBOutlet tells Xcode this property is connected to a view built in IB
+    // UILabel! is an auto unwrapped optional
+    // an open circle in the margin denotes an invalid connection
+    // a closed circle denotes a valid connection
+    
+    // now we need to add a mthod that executes when the Next Question button is pressed
+    @IBAction func nextQuestionPressed(_ sender: UIButton) {
+        // example of the target-action pair design pattern
+        // target: ViewController
+        // action: this method
+        // when pressed, button notifies target to execute its action
+        print("Next Question Pressed")
+    }
+    
+    @IBAction func showAnswerPressed(_ sender: UIButton) {
+        print("Show Answer Pressed")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         print("hello from viewDidLoad()")
+        // safely use questionLabel (it won't be nil)
+        questionLabel.text = "HELLO from viewDidLoad()"
+        
     }
 
 
