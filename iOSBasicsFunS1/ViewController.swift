@@ -35,6 +35,7 @@ import UIKit
 // example: ViewController
 
 class ViewController: UIViewController {
+    var quizModel = QuizModel()
     
     // MARK: - Connections
     // we have 4 UIViews in our storyboard
@@ -54,10 +55,12 @@ class ViewController: UIViewController {
         // action: this method
         // when pressed, button notifies target to execute its action
         print("Next Question Pressed")
+        showNextQuestion()
     }
     
     @IBAction func showAnswerPressed(_ sender: UIButton) {
         print("Show Answer Pressed")
+        answerLabel.text = quizModel.getCurrentAnswer()
     }
 
     override func viewDidLoad() {
@@ -68,6 +71,12 @@ class ViewController: UIViewController {
         // safely use questionLabel (it won't be nil)
         questionLabel.text = "HELLO from viewDidLoad()"
         
+        showNextQuestion()
+    }
+    
+    func showNextQuestion() {
+        questionLabel.text = quizModel.getNextQuestion()
+        answerLabel.text = "<Answer>"
     }
 
 
